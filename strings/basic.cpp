@@ -42,9 +42,8 @@ int main()
     cout<<arr[i]<<" ";  
 
 //STRING TOKENIZER : with tokenizer, string can be seperated into tokens based upon the provided delimiter
-    char str[]="what the hell noob";
-    char *ptr;
-    ptr=strtok(str," ");   //string seperated based on "delimiter"
+    char str[]="what the hell noob";    //only for character array, not for string
+    char *ptr = strtok(str," ");   //string seperated based on "delimiter"
     cout<<ptr<<endl;
     while(ptr!=NULL)      //at last ptr will be null
     {   
