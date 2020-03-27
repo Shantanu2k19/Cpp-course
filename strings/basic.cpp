@@ -45,7 +45,8 @@ int main()
     char arr[]="what the hell noob";    //only for character array, not for string
     char *ptr = strtok(arr," ");   //string seperated based on "delimiter"
     /*if there was string instead of character array, to convert string into array use following (in place of arr above)
-       (char *)str.c_str()   or in above line char *ptr = strtok((char *)str.c_str()," ");   */
+       (char *)str.c_str()   or in above line char *ptr = strtok((char *)str.c_str()," ");   
+       also cin accepts string without space, for space use getline(cin,str) instead*/
     cout<<ptr<<endl;
     while(ptr!=NULL)      //at last ptr will be null
     {   
