@@ -16,4 +16,4 @@ p3.second="car";
 
 important functions:
 
-strtok(chr,"delim"); //69919
+strtok(chr,"delim"); //69919 wut
