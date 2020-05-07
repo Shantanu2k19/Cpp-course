@@ -11,7 +11,10 @@ p3.first.first=1;
 p3.first.second=2;
 p3.second="car";
 
-
+while(scanf("%d",&n)!=EOF)   //for taking inputs till its available
+{
+ cout<<n<<endl;
+}
 
 
 important functions:
