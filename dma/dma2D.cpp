@@ -2,16 +2,16 @@
 using namespace std;
 int main() 
 {
-    int **arr2d=new int*[3]; //create primary array in heap, 3 units
+    int **arr2d=new int*[3]; //create primary array in heap, 3 units(rows) 
     for(int i=0;i<3;i++)
-    arr2d[i]=new int[4];  //created secondary arrays, 3 arr2days
+    arr2d[i]=new int[4];  //created secondary arrays, 3 arr2d (columns) 
 
-    int counter=0;
+    int counter=0; 
     for(int i=0;i<3;i++)
     {
         for(int j=0;j<4;j++)
         {
-            arr2d[i][j]=counter;
+            arr2d[i][j]=counter;   // (i,j)  rows,columns 
             counter++;
         }
     }
