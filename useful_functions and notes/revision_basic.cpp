@@ -16,6 +16,7 @@ while(scanf("%d",&n)!=EOF)   //for taking inputs till its available
  cout<<n<<endl;
 }
 
+int a=INT_MAX; //header file: <climits>
 
 important functions:
 
