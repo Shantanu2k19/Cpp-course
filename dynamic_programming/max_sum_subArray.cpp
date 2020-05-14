@@ -14,7 +14,6 @@ int maxSum(int a[],int n){
         if(dp[1]<0) dp[i]=0;
         maxSoFar = max(maxSoFar,dp[i]);
     }
-
     return maxSoFar;
 }
 
