@@ -1,0 +1,55 @@
+/* 
+longest common subsequence(need not to be continuous)
+x = nematode
+y = empty
+ans : emt 
+
+explanation : making a 2d array, putting strings in row and column 
+
+ if(x[i-1] == y[j-1])              //matched
+    dp[i][j] = 1+dp[i-1][j-1];
+            
+    else                           //different
+    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+
+-  -  𝓮  𝓶  𝓹  𝓽  𝔂
+-  0  0  0  0  0  0  
+n  0  0  0  0  0  0  
+e  0  1  1  1  1  1  
+m  0  1  2  2  2  2  
+a  0  1  2  2  2  2  
+t  0  1  2  2  3  3  
+o  0  1  2  2  3  3  
+d  0  1  2  2  3  3  
+e  0  1  2  2  3 (3)  dp[m][n]  
+
+ans :: 3
+*/
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int LCS(char x[],char y[]){
+    int m=strlen(x);
+    int n=strlen(y);
+    int dp[100][100]={0};
+
+    //base case
+    for(int i=1; i<=m; i++){
+        for(int j=1; j<=n; j++){
+            if(x[i-1] == y[j-1]){
+                dp[i][j] = 1+dp[i-1][j-1];
+            }
+            else
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+        }
+    }
+    return dp[m][n];
+}
+
+int main() {
+    char str1[100], str2[100];
+    cin>>str1>>str2;
+
+    cout<<LCS(str1,str2);
+}
