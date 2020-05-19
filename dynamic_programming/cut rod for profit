@@ -1,0 +1,60 @@
+/* cutting rod max profit
+cut rod, sell parts, earn different money for different lengths 
+earn max profit
+total length = 4mtr
+length = [1,2,3,4] and the respective profit:
+profit = [2,3,2,4]
+*/
+
+#include <iostream>
+using namespace std;
+
+int memo[100];
+
+int maxProfit(int arr[],int totlen){
+    if (totlen==0) return 0;
+
+    if (memo[totlen] != -1) return memo[totlen];
+
+    int bestProfit=0;
+    for(int length=1 ;length <= totlen ; length++){
+        int profit = arr[length] + maxProfit(arr, totlen - length);
+        bestProfit=max(bestProfit,profit);
+    }
+
+    memo[totlen] = bestProfit;
+    return bestProfit;
+}
+
+//bottom up approach
+int maxProfit_bu(int arr[],int totlen){
+    int dp[100] = {0};
+    
+    for(int len=1; len <= totlen; len++){  
+        int  bestProfit=0;
+        for(int cut=1; cut<=len; cut++){
+            bestProfit = max(bestProfit, arr[cut]+ dp[len-cut]);
+        }
+        dp[len] = bestProfit;
+    }
+    return dp[totlen];
+}
+
+int main() {
+    int price[100];
+    int length;
+    cin>>length;
+   
+    for(int i=1;i<=length;i++){
+        cin>>price[i];
+    }
+
+
+    //to reset memo array 
+    for(int i=0;i<=length;i++){
+    memo[i]=-1;
+    }
+    
+    //cout<<maxProfit(price, length);
+    cout<<maxProfit_bu(price, length);
+}
