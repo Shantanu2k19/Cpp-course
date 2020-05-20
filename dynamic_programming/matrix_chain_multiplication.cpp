@@ -7,12 +7,14 @@ a*(b*c) or (a*b)*c
 
 
 */
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int tdp[100][100];  //for dp
 
-//using recursion then added minor changes 
+//using recursion then added minor changes, top down approach
 int matrixChain(int m[],int i,int j){
     //base case
     if(i==j){
@@ -33,6 +35,25 @@ int matrixChain(int m[],int i,int j){
     return ans;
 }
 
+//bottom up approach
+int matrixChain_BU(int m[],int n){
+    int dp[100][100];
+
+    for(int i=1;i<n;i++){  //diagonal element 0
+        dp[i][i] = 0;
+    }
+    for(int l=2;l<n;l++){
+        for(int i=1;i<n;i++){
+            int j = i+l-1;
+            dp[i][j]=INT_MAX;
+
+            for(int k=i;k<j;k++){
+                dp[i][j] = min(dp[i][j], dp[i][k]+dp[k+1][j] + m[i-1]*m[k]*m[j]);
+            }
+        }
+    }
+    return dp[1][n-1];
+}
 int main() {
     int matrices[] = {1, 2, 3,  4}; //3 matrices: 1x2, 2x3, 3x4
                    //    i..k...j(n-1)
@@ -40,7 +61,6 @@ int main() {
 
     //initialise the array with -1
     memset(tdp,-1,sizeof tdp);
-    cout<<matrixChain(matrices,1,n-1);
+    //cout<<matrixChain(matrices,1,n-1);
+    cout<<matrixChain_BU(matrices,n);
 }
-
-//incomplete : watch video from 21:04
