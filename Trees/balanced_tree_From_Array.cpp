@@ -49,19 +49,15 @@ void printBFSs(node* root)
     queue<node*> q;
     q.push(root);
     q.push(NULL);
-    while(!q.empty())
-    {
-        if(q.front()==NULL)
-        {
+    while(!q.empty()){
+        if(q.front()==NULL){
             cout<<endl;
             q.pop();
-            if(!q.empty())
-            {
+            if(!q.empty()){
                 q.push(NULL);
             }
         }
-        else
-        {
+        else{
             node* temp=q.front();
             q.pop();
             cout<<temp->data<<" ";
