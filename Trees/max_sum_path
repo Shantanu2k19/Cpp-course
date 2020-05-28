@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* left;
+    node* right;
+    node(int d)
+    {
+        data=d;
+        left=NULL;
+        right=NULL;
+    }
+};
+
+node* insertInTree()
+{
+    int data;
+    cin>>data;
+
+    if(data==-1)
+    { return NULL; }
+    node* root = new node(data);
+    root->left = insertInTree();
+    root->right = insertInTree();
+    return root;
+}
+
+void bfs(node* root){
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
+    while(!q.empty()){
+        if(q.front()==NULL){
+            cout<<endl;
+            q.pop();
+            if(!q.empty())
+            { q.push(NULL); }
+        }
+        else{
+            node* temp = q.front();
+            cout<<temp->data<<" ";
+            q.pop();
+            if(temp->left){
+                q.push(temp->left);
+            }
+            if(temp->right){
+                q.push(temp->right);
+            }
+        }
+    }
+}
+
+int globalMax = -INT_MAX;
+
+int maxSumPath(node* root){
+    //base case
+    if(root == NULL) return 0;
+
+    //rec case
+    int leftSum = maxSumPath(root->left);
+    int rightSum = maxSumPath(root->right);
+
+    //self work
+    int case1 = leftSum + root->data;
+    int case2 = leftSum + root->data + rightSum;
+    int case3 = rightSum + root->data;
+    int case4 = root->data;
+    int case5 = 0;
+
+    int maxx = max(case1, max(case3, max(case4, case5) ) );
+    globalMax =  max(globalMax, max( leftSum, max(rightSum, max(case2,maxx) ) ) );
+    return maxx;
+}
+int main() 
+{
+    node* lol= insertInTree();
+    bfs(lol);
+    maxSumPath(lol);
+    cout<<"max sum : "<<globalMax;
+}
+//1 2 3 -1 -1 4 -1 -1 5 6 -1 -1 7 8 -1 -1 9 -1 -1
+
+/*
+            1
+      2          5
+    3   4      6   7
+                   8   9
+                  
+*/
