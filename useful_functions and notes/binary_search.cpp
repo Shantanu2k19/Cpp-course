@@ -1,3 +1,4 @@
+//binary search is only for sorted array
 #include <iostream>
 using namespace std;
 
