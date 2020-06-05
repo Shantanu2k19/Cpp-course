@@ -31,6 +31,7 @@ void printFactors(int n){
                 count++;  //count carries info about how many times to multiply(raise power of i)
             }
             factors.push_back(make_pair(i,count)); //store the divisor and count(power) of it
+            count = 0;  //IMPORTANT
         }
     }
     if(n!=1){
