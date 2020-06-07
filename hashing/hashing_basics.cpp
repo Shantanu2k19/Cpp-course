@@ -191,8 +191,29 @@ class Hashtable{
         }
         return ; 
     }
+        
+     
+//[] operator
+//here operator overloading is used for [], also it returns by reference
+//so the value change is observed 
+    T& operator[](string key){
+        T * f = search(key);  //search 
+        if(f==NULL){ //key not present
+        //insert key with garbage value 
+            T garbage;
+            insert(key,garbage);
+            f = search(key); //for index of the key inserted
+            //f points to garbage (value)
+        }
+        return *f; //now the pointer is returned with reference
+    }
 
 };
+
+
+
+
+
 
 int main()
 {
@@ -213,6 +234,19 @@ int main()
     price_menu.erase("Pepsi");
     cout<<"\nafter deleting\n"<<endl;
     price_menu.print();
+        
+    
+    //using [] operator, custom designed
+
+    //Insert
+    price_menu["Dosa"] = 60;  //if Dosa present, update price, else insert data
+
+    //Update
+    price_menu["Dosa"] += 10;  //the reference pointer will cause value change in original bucket(LL)
+
+    //search
+    cout<<"dosa price : "<<price_menu["Dosa"]<<endl;
+
     return 0;
 }
 
