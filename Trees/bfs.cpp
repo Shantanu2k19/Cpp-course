@@ -71,7 +71,7 @@ void bfs(node* root)
         else{
             node* temp = q.front();
             cout<<temp->data<<" ";
-            q.pop();
+            q.pop();    
             if(temp->left){
                 q.push(temp->left);
             }
@@ -91,8 +91,7 @@ int main()
 /*
     sample input : 1 2 3 -1 -1 4 -1 -1 5 6 -1 -1 7 8 -1 -1 9 -1 -1
     output : 
-    1 
-    2 5 
+    1     2 5 
     3 4 6 7 
     8 9 
 */

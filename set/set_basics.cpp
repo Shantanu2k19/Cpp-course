@@ -23,12 +23,26 @@ int main() {
     for(set<int>::iterator it=lol.begin(); it != lol.end(); it++)
         cout<< *it <<", ";
 
+
+    cout<<"\n\nFinding element\n";
+
+    set<int, int>::iterator gg = lol.find(21); //returns iterator 
+    if(gg!=lol.end()){
+        cout<<"found\n";
+        cout<<*gg<<endl;
+    }
+    else cout<<"not found\n";
+
+
     lol.erase(20);  //to delete element
     cout<<endl;
 
     //another way to access elements
     for(int x:lol) cout<<x<<", ";
     cout<<endl<<endl;
+
+
+
 
     //set of pairs
     set<pair<int,int>> s;

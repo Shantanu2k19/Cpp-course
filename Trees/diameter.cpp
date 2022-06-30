@@ -101,7 +101,8 @@ Pairr fastDiameter(node* root)
 
 int main() 
 {
-    node* lol = insertInTree();bfs(lol);
+    node* lol = insertInTree();
+    //bfs(lol);
     cout<<"number of nodes in tree : "<<countNodes(lol)<<endl;
     cout<<"diameter of tree: "<<diameterOfTree(lol)<<endl<<endl;
 

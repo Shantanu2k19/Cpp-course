@@ -29,7 +29,7 @@ node* constructTree()  //returns address of root node
     return root; 
 }
 
-node* insertInTree()
+node* insertInTree() //1 2 3 -1 4 5 6 -1 -1 7 2 -1 -1 3 -1 -1
 {
     int data;
     cin>>data;
